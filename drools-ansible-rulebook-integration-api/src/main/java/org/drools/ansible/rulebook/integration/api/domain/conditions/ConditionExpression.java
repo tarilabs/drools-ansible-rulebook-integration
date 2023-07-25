@@ -54,7 +54,7 @@ public class ConditionExpression {
     }
 
     public String getFieldName() {
-        return ((PrototypeExpression.PrototypeFieldValue) prototypeExpression).getFieldName();
+        return ((PrototypeExpression.PrototypeFieldValue) prototypeExpression).getIndexingKey().get();
     }
 
     public PrototypeExpression getPrototypeExpression() {
