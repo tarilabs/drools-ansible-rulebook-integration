@@ -16,6 +16,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.BiPredicate;
 import java.util.stream.Collectors;
 
+import static org.drools.ansible.rulebook.integration.api.rulesmodel.RulesModelUtil.ORIGINAL_MAP_FIELD;
 import static org.drools.ansible.rulebook.integration.api.rulesmodel.RulesModelUtil.mapToFact;
 
 
@@ -106,7 +107,7 @@ public class RulesExecutorSession {
                 }
             }
         }
-        return false;
+        return wmFactKey.equals(ORIGINAL_MAP_FIELD);
     }
 
     int fireAllRules() {
@@ -163,9 +164,5 @@ public class RulesExecutorSession {
 
     public boolean isMatchMultipleRules() {
         return rulesSet.isMatchMultipleRules();
-    }
-
-    public KieSession asKieSession() {
-        return kieSession;
     }
 }

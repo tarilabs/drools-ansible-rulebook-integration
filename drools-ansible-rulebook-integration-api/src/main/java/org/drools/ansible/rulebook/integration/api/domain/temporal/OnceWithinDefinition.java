@@ -70,7 +70,7 @@ public class OnceWithinDefinition extends OnceAbstractTimeConstraint {
 
     public static final String KEYWORD = "once_within";
 
-    public OnceWithinDefinition(TimeAmount timeAmount, List<GroupByAttribute> groupByAttributes) {
+    public OnceWithinDefinition(TimeAmount timeAmount, List<String> groupByAttributes) {
         super(timeAmount, groupByAttributes);
     }
 
@@ -89,8 +89,8 @@ public class OnceWithinDefinition extends OnceAbstractTimeConstraint {
         Event controlEvent = createMapBasedEvent( getPrototype(SYNTHETIC_PROTOTYPE_NAME) )
                 .withExpiration(timeAmount.getAmount(), timeAmount.getTimeUnit());
         Fact fact = (Fact) facts[0];
-        for (GroupByAttribute unique : groupByAttributes) {
-            controlEvent.set(unique.getKey(), unique.evalExtractorOnFact(fact));
+        for (String unique : groupByAttributes) {
+            controlEvent.set(unique, fact.get(unique));
         }
         controlEvent.set("drools_rule_name", ruleName);
         drools.insert(controlEvent);
@@ -127,10 +127,7 @@ public class OnceWithinDefinition extends OnceAbstractTimeConstraint {
     }
 
     public static OnceWithinDefinition parseOnceWithin(String onceWithin, List<String> groupByAttributes) {
-        List<GroupByAttribute> sanitizedAttributes = groupByAttributes.stream()
-                .map(OnceAbstractTimeConstraint::sanitizeAttributeName)
-                .map(GroupByAttribute::from)
-                .collect(toList());
+        List<String> sanitizedAttributes = groupByAttributes.stream().map(OnceAbstractTimeConstraint::sanitizeAttributeName).collect(toList());
         return new OnceWithinDefinition(parseTimeAmount(onceWithin), sanitizedAttributes);
     }
 }

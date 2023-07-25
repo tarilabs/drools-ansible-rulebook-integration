@@ -186,7 +186,7 @@ public class TimedOutTest {
         assertEquals(0, stats.getEventsSuppressed());
         assertEquals(0, stats.getPermanentStorageCount());
     }
-    
+
     @Test
     public void testTimedOutWithAutomaticClockAdvance() throws IOException {
         String json =

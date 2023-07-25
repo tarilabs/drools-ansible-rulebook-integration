@@ -2,7 +2,6 @@ package org.drools.ansible.rulebook.integration.api.rulesmodel;
 
 import org.drools.ansible.rulebook.integration.api.domain.RuleGenerationContext;
 import org.drools.ansible.rulebook.integration.api.domain.constraints.NegationOperator;
-import org.drools.ansible.rulebook.integration.protoextractor.prototype.ExtractorPrototypeExpressionUtils;
 import org.drools.model.ConstraintOperator;
 import org.drools.model.PrototypeDSL;
 import org.drools.model.PrototypeExpression;
@@ -23,7 +22,7 @@ public class ParsedCondition {
     private boolean negated = false;
 
     public ParsedCondition(String left, ConstraintOperator operator, Object right) {
-        this(ExtractorPrototypeExpressionUtils.prototypeFieldExtractor(left), operator, fixedValue(right));
+        this(prototypeField(left), operator, fixedValue(right));
     }
 
     public ParsedCondition(PrototypeExpression left, ConstraintOperator operator, PrototypeExpression right) {

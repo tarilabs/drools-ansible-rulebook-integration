@@ -15,11 +15,6 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.drools</groupId>
-      <artifactId>drools-ansible-rulebook-integration-protoextractor</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-    <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-simple</artifactId>
     </dependency>

@@ -10,7 +10,6 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>drools-ansible-rulebook-integration-protoextractor</module>
     <module>drools-ansible-rulebook-integration-api</module>
     <module>drools-ansible-rulebook-integration-runtime</module>
 <!--    <module>drools-ansible-rulebook-integration-core-rest</module>-->
